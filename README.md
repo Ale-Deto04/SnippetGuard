@@ -23,9 +23,9 @@ The entire tool works offline and runs locally without any external dependencies
 
 ## The Project
 
-SnippetGuard is a personal project created as a simple but effective tool to combine my interests in AI and cybersecurity. It is intended as a learning exercise to train and use an AI model for code vulnerability detection.
+SnippetGuard is a personal project born from my interest for AI and cybersecurity. Designed as both an academic endeavor and a hands-on learning experience, it aims to train and utilize an AI model to effectively detect vulnerabilities in code. Simple yet powerful, SnippetGuard bridges cutting-edge technology with practical security challenges.
 
-Do not rely on this tool for critical or production projects. The model is trained on a relatively small and simple dataset and may produce incorrect results.
+**[Disclaimer]**: Do not rely on this tool for critical or production projects. This project is purely academic and intended for learning purposes only. It is not designed for serious or production-level code development. The model is trained on a limited dataset and may produce inaccurate results. Use it with caution.
 
 ---
 
