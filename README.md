@@ -25,7 +25,7 @@ The entire tool works offline and runs locally without any external dependencies
 
 SnippetGuard is a personal project born from my interest for AI and cybersecurity. Designed as both an academic endeavor and a hands-on learning experience, it aims to train and utilize an AI model to effectively detect vulnerabilities in code. Simple yet powerful, SnippetGuard bridges cutting-edge technology with practical security challenges.
 
-**[Disclaimer]**: Do not rely on this tool for critical or production projects. This project is purely academic and intended for learning purposes only. It is not designed for serious or production-level code development. The model is trained on a limited dataset and may produce inaccurate results. Use it with caution.
+_**[Disclaimer]**: Do not rely on this tool for critical or production projects. This project is purely academic and intended for learning purposes only. It is not designed for serious or production-level code development. The model is trained on a limited dataset and may produce inaccurate results. Use it with caution._
 
 ---
 
@@ -100,13 +100,13 @@ To enable GPU:
 2. Uncomment lines 15-16 and comment lines 19-20
 
       ```python
-      # Use GPU if available
-      device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-      model.to(device)
+      14 # Use GPU if available
+      15 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+      16 model.to(device)
 
-      # Default: use CPU
-      # device = torch.device("cpu")
-      # model.to(device)
+      18 # Default: use CPU
+      19 # device = torch.device("cpu")
+      20 # model.to(device)
       ```
 If you don’t have a GPU or drivers, just leave it commented to run on CPU.
 
