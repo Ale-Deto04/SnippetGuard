@@ -1,0 +1,9 @@
+[
+    "arbitrary_code_exec",
+    "buffer_overflow",
+    "command_injection",
+    "insecure_deserialization",
+    "none",
+    "path_traversal",
+    "sqli"
+]

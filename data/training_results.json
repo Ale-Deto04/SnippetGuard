@@ -1,0 +1,69 @@
+{
+    arbitrary_code_exec: {
+        precision: 0.99,
+        recall: 0.99,
+        f1-score: 0.99,
+        support: 355
+    },
+    buffer_overflow: {
+        precision: 0.99,
+        recall: 0.98,
+        f1-score: 0.99,
+        support: 161
+    },
+    command_injection: {
+        precision: 0.98,
+        recall: 0.98,
+        f1-score: 0.98,
+        support: 255
+    },
+    insecure_deserialization: {
+        precision: 0.99,
+        recall: 0.97,
+        f1-score: 0.98,
+        support: 155
+    },
+    none: {
+        precision: 0.98,
+        recall: 0.97,
+        f1-score: 0.97,
+        support: 486
+    },
+    path_traversal: {
+        precision: 1.00,
+        recall: 0.95,
+        f1-score: 0.98,
+        support: 211
+    },
+    sqli: {
+        precision: 1.00,
+        recall: 1.00,
+        f1-score: 1.00,
+        support: 184
+    },
+    micro avg: {
+        precision: 0.99,
+        recall: 0.98,
+        f1-score: 0.98,
+        support: 1807
+    },
+    macro avg: {
+        precision: 0.99,
+        recall: 0.98,
+        f1-score: 0.98,
+        support: 1807
+    },
+    weighted avg: {
+        precision: 0.99,
+        recall: 0.98,
+        f1-score: 0.98,
+        support: 1807
+    },
+    samples avg: {
+        precision: 0.98,
+        recall: 0.98,
+        f1-score: 0.98,
+        support: 1807
+    }
+}
+

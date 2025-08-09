@@ -1,0 +1,121 @@
+#!/bin/env python3
+
+import os
+import typer
+from main_utils import isPythonFile, print_message
+from typing import Optional
+from pathlib import Path
+from model_utils import VulnerableFile, init_vulnFile_from_path
+from config import LABELS, MODEL_PATH, LABELS_PATH, THRESHOLD, VERSION, APP_NAME
+from graphic import print_debug_info, print_summary, print_labels, print_banner, print_program_info, print_tree
+
+app = typer.Typer()
+
+@app.command()
+def scan(
+    file: Optional[Path] = typer.Option(None, "-f", "--file", help = "Path to a single Python script"),
+    directory: Optional[Path] = typer.Option(None, "-d", "--directory", help = "Path to a directory containing Python scripts"),
+    output: Optional[Path] = typer.Option(None, "-o", "--output", help = "Path to output file to save results"),
+    show_all: bool = typer.Option(False, "-a", "--all", help = "Show all the details for the result"),
+    select: Optional[str] = typer.Option(None, "-s", "--select", help = "Select and filter for a specific vulnerability. Use -l to show the vulnerability list"),
+    force: bool = typer.Option(False, "-F", "--force", help = "Force all the operations without asking"),
+    list_vuln: bool = typer.Option(False, "-l", "--list", help = "List labels for vulnerability detected by the model"),
+    debug: bool = typer.Option(False, "-g", "--debug", help = "Show chunk division"),
+    version: bool = typer.Option(False, "-v", "--version", help = "Show CLI tool version")
+):
+    if version:
+        typer.echo(f"Version: {VERSION}")
+        raise typer.Exit(code = 0)
+
+    if list_vuln:
+        print_labels(LABELS)
+        raise typer.Exit(code = 0)
+
+    if file and directory:
+        print_message("You must provide either a file or a directory, you provided both.", msg_type = "err")
+        raise typer.Exit(code = 1)
+
+    if select and select not in LABELS:
+        print_message(f"Vulnerability {select} is not supported. Use -l to see the vulnerability list.", msg_type = "err")
+        raise typer.Exit(code = 1)
+
+    if not file and not directory:
+        print_message("You must provide either a file or a directory. Type --help for further information.", msg_type = "err")
+        raise typer.Exit(code=1)
+
+    print_banner()
+    print_program_info(select)
+
+    if file:
+        if not file.exists() or not file.is_file():
+            print_message(f"File {file} not found.", msg_type = "err")
+            raise typer.Exit(code=1)
+
+        print_message(f"Working on file {file}", msg_type = "info")
+
+        if not isPythonFile(file) and not force:
+            print_message(f"{file} does not seem to be a Python script.", msg_type = "warn")
+            wait_for_cont("Do you want to proceed anyway? [y/n]")
+
+        vuln_file = init_vulnFile_from_path(file)
+        if debug:
+            print_debug_info(vuln_file)
+            wait_for_cont("Do you want to proceed with analysis? [y/n]")
+
+        print_message("Starting evaluation...", msg_type = "info")
+        vuln_file.evaluate(select)
+        print("")
+        if output:
+            print_message(f"Printing summary on {output}...", msg_type = "info")
+        print_summary(vuln_file, output, show_all, select)
+
+    else:
+        if not directory.exists() or not directory.is_dir():
+            print_message(f"Directory {directory} not found.", msg_type = "err")
+            raise typer.Exit(code=1)
+
+        print_message(f"Working on directory {directory}", msg_type = "info")
+
+        dir_files = [f for f in directory.iterdir() if f.is_file() and isPythonFile(f)]
+        print_message(f"These are the files in {directory} detected as Python scripts:", msg_type = "info")
+        print_tree(directory, dir_files)
+
+        if not force:
+            wait_for_cont("Do you want to proceed? [y/n]")
+
+        vuln_files = []
+        for dir_file in dir_files:
+            vuln_file = init_vulnFile_from_path(dir_file)
+            vuln_files.append(vuln_file)
+
+        if debug:
+            for db_vuln_file in vuln_files:
+                print_debug_info(db_vuln_file)
+            wait_for_cont("Do you want to proceed with analysis? [y/n]")
+
+        print("")
+        print_message("Starting evaluation...", msg_type = "info")
+        for vuln_file in vuln_files:
+            vuln_file.evaluate(select)
+        print("")
+
+        if output:
+            print_message(f"Printing summary on {output}...", msg_type = "info")
+        for vf in vuln_files:
+            print_summary(vf, output, show_all, select)
+
+    print_message("Program successfully terminated its execution (exit_code = 0)", msg_type = "info")
+    raise typer.Exit(code = 0)
+
+def wait_for_cont(question: str):
+    while True:
+        ans = typer.prompt(question).strip().lower()
+        if ans in ("y", "n"):
+            print("")
+            break
+    if ans == "n":
+        print_message("Process aborted by the user.", msg_type = "info")
+        raise typer.Exit(code = 0)
+
+if __name__ == "__main__":
+    app(help_option_names = ["-h", "--help"])
