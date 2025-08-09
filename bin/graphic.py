@@ -93,13 +93,14 @@ def print_file_header(file: VulnerableFile, console, select = None):
 
 def print_summary(file: VulnerableFile, stream = None, show_all = False, select = None):
     console = get_console(stream)
+
     print_file_header(file, console, select)
 
     if file.vulnSnippets:
         for snippet in file.vulnSnippets:
             print_snippet(snippet, console, show_all)
     else:
-        console.print(Panel.fit(f"safe according to searched vulnerability ({select})", border_style = "green", title = "[bold green]Safe[/bold green]"))
+        console.print(Panel.fit(f"safe according to searched vulnerability ({select if select else "any"})", border_style = "green", title = "[bold green]Safe[/bold green]"))
     console.print("")
 
     if stream:
@@ -134,6 +135,4 @@ def print_labels(labels):
     main_console.print("")
     main_console.print(table)
 
-
-
-
+# 09/08/25

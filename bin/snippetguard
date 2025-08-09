@@ -8,6 +8,7 @@ from pathlib import Path
 from model_utils import VulnerableFile, init_vulnFile_from_path
 from config import LABELS, MODEL_PATH, LABELS_PATH, THRESHOLD, VERSION, APP_NAME
 from graphic import print_debug_info, print_summary, print_labels, print_banner, print_program_info, print_tree
+from preprocess import SnippetNotEvaluated
 
 app = typer.Typer()
 
@@ -63,7 +64,12 @@ def scan(
             wait_for_cont("Do you want to proceed with analysis? [y/n]")
 
         print_message("Starting evaluation...", msg_type = "info")
-        vuln_file.evaluate(select)
+        try:
+            vuln_file.evaluate(select)
+        except SnippetNotEvaluated as e:
+            print_message(f"{e}", msg_type = "err")
+            raise typer.Exit(code = 1)
+
         print("")
         if output:
             print_message(f"Printing summary on {output}...", msg_type = "info")
@@ -95,8 +101,17 @@ def scan(
 
         print("")
         print_message("Starting evaluation...", msg_type = "info")
-        for vuln_file in vuln_files:
-            vuln_file.evaluate(select)
+        for vuln_file in vuln_files[:]:
+            try:
+                vuln_file.evaluate(select)
+            except SnippetNotEvaluated as e:
+                print_message(f"{e}", msg_type = "err")
+                vuln_files.remove(vuln_file)
+
+        if not vuln_files:
+            print_message("Could not evaluate any file", msg_type = "err")
+            raise typer.Exit(code = 1)
+
         print("")
 
         if output:
@@ -118,4 +133,6 @@ def wait_for_cont(question: str):
         raise typer.Exit(code = 0)
 
 if __name__ == "__main__":
-    app(help_option_names = ["-h", "--help"])
+    app()
+
+# 09/08/25

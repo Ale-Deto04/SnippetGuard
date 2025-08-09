@@ -98,7 +98,6 @@ def preparse_python_code(snippet_code:str, file_name):
     try:
         tree = ast.parse(snippet_code)
     except (SyntaxError, IndentationError) as e:
-        print(f"[ERROR] failed to pre-parse {file_name}: {e}")
         return []
 
     lines = snippet_code.splitlines(keepends = True)
@@ -160,3 +159,5 @@ def preparse_python_code(snippet_code:str, file_name):
 
     # Returns a list of Snippet
     return chunks
+
+# 09/08/25

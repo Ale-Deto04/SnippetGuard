@@ -33,7 +33,8 @@ class VulnerableFile:
 
 
     def evaluate(self, select = None):
-
+        if not self.snippets:
+            raise SnippetNotEvaluated(f"Failed to pre-parse {self.file_name}: it may contain syntax errors")
         for snippet in self.snippets:
             snippet.evaluate()
         try:
@@ -48,3 +49,5 @@ def init_vulnFile_from_path(path: Path) -> VulnerableFile:
         string_file = file.read()
     return VulnerableFile(path, string_file)
     print_message(f"File {path} successfully parsed and preprocessed.", msg_type = "info")
+
+# 09/08/25

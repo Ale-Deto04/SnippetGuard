@@ -25,3 +25,5 @@ def print_message(message: str, msg_type, console = main_console):
             console.print(Panel.fit(f"[white not bold]{timestamp}[/white not bold] {message}", border_style = "red", title = "[bold red]Error[/bold red]"))
         case _:
             console.print(f"[white not bold ]{timestamp}[/white not bold] {message}")
+
+# 09/08/25
