@@ -72,6 +72,12 @@ _**[Disclaimer]**: Do not rely on this tool for critical or production projects.
       ```bash
       ./bin/snippetguard --help
       ```
+      
+5. _(Optional)_ Add ./bin/snippetguard to your $PATH environment variable to run the tool from anywhere:
+
+     ```bash
+     export PATH="$PATH:$(pwd)/bin"
+     ```
 
 ---
 
@@ -79,12 +85,12 @@ _**[Disclaimer]**: Do not rely on this tool for critical or production projects.
 
 The tool supports the following command-line options:
 
-- `-f <file>`: Specify a single input python script to analyze.  
-- `-d <directory>`: Specify a directory to analyze all contained python scripts.
-- `-o <output_file>`: Specify the output file where results will be saved.
-- `-s <label>`: Search for the specified vulnerability  
-- `-a`: Print detailed metrics for each vulnerability category after evaluation.  
-- `-g`: Show how the snippet is divided into chunks during parsing.  
+- `snippetguard -f <file>`: Specify a single input python script to analyze.  
+- `snippetguard -d <directory>`: Specify a directory to analyze all contained python scripts.
+- `snippetguard -o <output_file>`: Specify the output file where results will be saved.
+- `snippetguard -s <label>`: Search for the specified vulnerability  
+- `snippetguard -a`: Print detailed metrics for each vulnerability category after evaluation.  
+- `snippetguard -g`: Show how the snippet is divided into chunks during parsing.  
 
 ---
 
