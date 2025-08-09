@@ -31,7 +31,7 @@ _**[Disclaimer]**: Do not rely on this tool for critical or production projects.
 
 ## Dataset and Model
 
-- The training dataset consists of about 1600 Python code snippets, partly AI-generated and partly adapted from a modified version of the lemon42-ai/Code_Vulnerability_Labeled_Dataset available on Hugging Face.
+- The training dataset consists of about 1600 Python code snippets, partly AI-generated and partly adapted from a modified version of the `lemon42-ai/Code_Vulnerability_Labeled_Dataset` available on Hugging Face.
 - The CodeBERT model has been fine-tuned with this dataset; training parameters and a final training report are included in the repository.
 - Repository structure:
   - `bin/`: Python modules to run the tool
