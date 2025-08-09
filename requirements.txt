@@ -3,3 +3,4 @@ rich==14.1.0
 scipy==1.16.1
 torch==2.8.0
 transformers==4.55.0
+typer==0.16.0
