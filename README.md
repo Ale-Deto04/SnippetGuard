@@ -73,7 +73,7 @@ _**[Disclaimer]**: Do not rely on this tool for critical or production projects.
       ./bin/snippetguard --help
       ```
       
-5. _(Optional)_ Add ./bin/snippetguard to your $PATH environment variable to run the tool from anywhere:
+5. _(Optional)_ Add ./bin/snippetguard to your `$PATH` environment variable to run the tool from anywhere:
 
      ```bash
      export PATH="$PATH:$(pwd)/bin"
