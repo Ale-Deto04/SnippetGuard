@@ -55,16 +55,22 @@ _**[Disclaimer]**: Do not rely on this tool for critical or production projects.
 1. Clone the repository:
 
     ```bash
-    git clone [<repository_url>](https://github.com/Ale-Deto04/SnippetGuard/edit/main/README.md)
+    git clone https://github.com/Ale-Deto04/SnippetGuard
     cd SnippetGuard
     ```
 
 2. Make sure the paths to the model and labels in `bin/config.py` are correct.
 
-3. Run the tool and check if it works:
+3. Make `bin/snippetguard` executable:
+
+     ```bash
+     chmod +x bin/snippetguard
+     ```
+
+4. Run the tool and check if it works:
 
       ```bash
-      python bin/snippetguard --help
+      ./bin/snippetguard --help
       ```
 
 ---
@@ -109,6 +115,13 @@ To enable GPU:
       20 # model.to(device)
       ```
 If you don’t have a GPU or drivers, just leave it commented to run on CPU.
+
+---
+
+## Future Developments
+
+Potential future improvements for SnippetGuard include optimizing the parsing and segmentation of code chunks to enhance accuracy and efficiency. Another important direction is to expand the model’s knowledge base, enabling it to analyze vulnerabilities in additional programming languages beyond Python.
+A possible future development could be the integration of generative AI to suggest safe fixes for vulnerable code snippets; however, this would make the program slower and heavier, moving away from the original lightweight design of the project.
 
 ---
 
