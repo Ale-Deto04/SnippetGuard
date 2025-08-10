@@ -126,7 +126,10 @@ If you don’t have a GPU or drivers, just leave it commented to run on CPU.
 
 ## Future Developments
 
-Potential future improvements for SnippetGuard include optimizing the parsing and segmentation of code chunks to enhance accuracy and efficiency. Another important direction is to expand the model’s knowledge base, enabling it to analyze vulnerabilities in additional programming languages beyond Python.
+Potential future improvements for SnippetGuard include optimizing the parsing and segmentation of code chunks to enhance accuracy and efficiency.
+
+Another important direction is to expand the model’s knowledge base, enabling it to analyze vulnerabilities in additional programming languages beyond Python.
+
 A possible future development could be the integration of generative AI to suggest safe fixes for vulnerable code snippets; however, this would make the program slower and heavier, moving away from the original lightweight design of the project.
 
 ---
