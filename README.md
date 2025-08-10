@@ -107,7 +107,7 @@ The tool supports the following command-line options:
 The code can use GPU if available, but you need a compatible NVIDIA GPU and CUDA drivers installed. Otherwise, it will run on CPU.
 To enable GPU:
 
-1. Go on `bin/model.py` source code
+1. Go to `bin/model.py` source code
 
 2. Uncomment lines 15-16 and comment lines 19-20
 
