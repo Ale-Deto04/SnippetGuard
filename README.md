@@ -1,6 +1,6 @@
 # SnippetGuard
 
-**SnippetGuard** is a CLI tool for Linux that combines AI and cybersecurity to detect vulnerabilities in Python code snippets. It uses a fine-tuned CodeBERT model to analyze code and perform an AI-driven security analysis.
+**SnippetGuard** is a CLI tool for Linux that combines AI and cybersecurity to detect vulnerabilities in Python code snippets. It uses a fine-tuned CodeBERT model to analyze code and help to perform an AI-driven security analysis.
 
 ---
 
