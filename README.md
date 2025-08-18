@@ -102,27 +102,19 @@ The tool supports the following command-line options:
 
 ## Example of output
 
-Here are some simple examples of how to use SnippetGuard:
+<p>Here are some simple examples of how to use SnippetGuard:</p>
 
 ### Basic usage
-```bash
-./bin/snippetguard -f test_snippet
-```
-![Basic usage](assets/screenshots/scan_file.png)
-
+<pre><code>./bin/snippetguard -f test_snippet</code></pre>
+<img src="assets/screenshots/scan_file.png" alt="Basic usage" width="400" style="border-radius: 15px;">
 
 ### Filter for a specific vulnerability
-```bash
-./bin/snippetguard -f test_snippet -s sqli
-```
-![Filter](assets/screenshots/scan_file_with_select.png)
-
+<pre><code>./bin/snippetguard -f test_snippet -s sqli</code></pre>
+<img src="assets/screenshots/scan_file_with_select.png" alt="Filter" width="400" style="border-radius: 15px;">
 
 ### Scan directory
-```bash
-./bin/snippetguard -d test_dir
-```
-![Scan directory](assets/screenshots/scan_directory.png)
+<pre><code>./bin/snippetguard -d test_dir</code></pre>
+<img src="assets/screenshots/scan_directory.png" alt="Scan directory" width="400" style="border-radius: 15px;">
 
 ---
 
