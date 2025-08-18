@@ -59,21 +59,19 @@ _**[Disclaimer]**: Do not rely on this tool for critical or production projects.
     cd SnippetGuard
     ```
 
-2. Make sure the paths to the model and labels in `bin/config.py` are correct.
-
-3. Make `bin/snippetguard` executable:
+2. Make `bin/snippetguard` executable:
 
      ```bash
      chmod +x bin/snippetguard
      ```
 
-4. Run the tool and check if it works:
+3. Run the tool and check if it works:
 
       ```bash
       ./bin/snippetguard --help
       ```
       
-5. _(Optional)_ Add ./bin/snippetguard to your `$PATH` environment variable to run the tool from anywhere:
+4. _(Optional)_ Add ./bin/snippetguard to your `$PATH` environment variable to run the tool from anywhere:
 
      ```bash
      export PATH="$PATH:$(pwd)/bin"
@@ -99,6 +97,11 @@ The tool supports the following command-line options:
 - CodeBERT (fine-tuned)
 - Typer (for CLI)
 - Rich (for enhance command-line interface)
+
+---
+
+## Example of output
+
 
 ---
 
