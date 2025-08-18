@@ -106,15 +106,15 @@ The tool supports the following command-line options:
 
 ### Basic usage
 <pre><code>./bin/snippetguard -f test_snippet</code></pre>
-<img src="assets/screenshots/scan_file.png" alt="Basic usage" width="400" style="border-radius: 15px;">
+<img src="assets/screenshots/scan_file.png" alt="Basic usage" style="border-radius: 45px;">
 
 ### Filter for a specific vulnerability
 <pre><code>./bin/snippetguard -f test_snippet -s sqli</code></pre>
-<img src="assets/screenshots/scan_file_with_select.png" alt="Filter" width="400" style="border-radius: 15px;">
+<img src="assets/screenshots/scan_file_with_select.png" alt="Filter" style="border-radius: 45px;">
 
 ### Scan directory
 <pre><code>./bin/snippetguard -d test_dir</code></pre>
-<img src="assets/screenshots/scan_directory.png" alt="Scan directory" width="400" style="border-radius: 15px;">
+<img src="assets/screenshots/scan_directory.png" alt="Scan directory" style="border-radius: 45px;">
 
 ---
 
