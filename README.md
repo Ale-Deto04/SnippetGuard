@@ -102,7 +102,7 @@ The tool supports the following command-line options:
 
 ## Example of output
 
-Here are some simple examples of how SnippetGuard works:
+Here are some simple examples of how to use SnippetGuard:
 
 ### Basic usage
 ```bash
@@ -110,17 +110,19 @@ Here are some simple examples of how SnippetGuard works:
 ```
 ![Basic usage](assets/screenshots/scan_file.png)
 
+
 ### Filter for a specific vulnerability
 ```bash
 ./bin/snippetguard -f test_snippet -s sqli
 ```
-![Basic usage](assets/screenshots/scan_file_with_select.png)
+![Filter](assets/screenshots/scan_file_with_select.png)
+
 
 ### Scan directory
 ```bash
 ./bin/snippetguard -d test_dir
 ```
-![Basic usage](assets/screenshots/scan_directory.png)
+![Scan directory](assets/screenshots/scan_directory.png)
 
 ---
 
