@@ -6,18 +6,18 @@
 
 ## Overview
 
-SnippetGuard accepts a file or a directory as input, identifies Python scripts, splits each file into smaller chunks (snippets), and feeds them into a CodeBERT-based model for vulnerability evaluation. The model returns a prediction for each snippet.
+SnippetGuard accepts a file or a directory as input, identifies **Python scripts**, splits each file into smaller chunks (snippets), and feeds them into a **CodeBERT-based model for vulnerability evaluation**. The model returns a prediction for each snippet.
 
 The model is trained to recognize the following vulnerabilities:
 
-- SQL Injection (SQLi)
-- Arbitrary Code Execution
-- Path Traversal
-- Command Injection
-- Insecure Deserialization
-- Buffer Overflow
+- _SQL Injection (SQLi)_
+- _Arbitrary Code Execution_
+- _Path Traversal_
+- _Command Injection_
+- _Insecure Deserialization_
+- _Buffer Overflow_
 
-The entire tool works offline and runs locally without any external dependencies.
+The entire tool works offline and **runs locally** without any external dependencies.
 
 ---
 
@@ -25,16 +25,29 @@ The entire tool works offline and runs locally without any external dependencies
 
 SnippetGuard is a personal project born from my interest for AI and cybersecurity. Designed as both an academic endeavor and a hands-on learning experience, it aims to train and utilize an AI model to effectively detect vulnerabilities in code. Simple yet powerful, SnippetGuard bridges cutting-edge technology with practical security challenges.
 
-_**[Disclaimer]**: Do not rely on this tool for critical or production projects. This project is purely academic and intended for learning purposes only. It is not designed for serious or production-level code development. The model is trained on a limited dataset and may produce inaccurate results. Use it with caution._
+> [!WARNING]
+> Do not rely on this tool for critical or production projects. This project is purely academic and intended for learning purposes only. It is not designed for serious or production-level code development. The model is trained on a limited dataset and may produce inaccurate results. Use it with caution.
 
 ---
 
 ## Dataset and Model
 
-- The training dataset consists of about 1600 Python code snippets, partly AI-generated and partly adapted from a modified version of the `lemon42-ai/Code_Vulnerability_Labeled_Dataset` available on Hugging Face.
-- The CodeBERT model has been fine-tuned with this dataset; training parameters and a final training report are included in the repository.
-- Repository structure:
-  - `bin/`: Python modules to run the tool
+The training dataset consists of about **1600 Python code snippets**, partly AI-generated and partly adapted from a modified version of the `lemon42-ai/Code_Vulnerability_Labeled_Dataset` available on [Hugging Face](https://huggingface.co/).
+
+The CodeBERT model has been fine-tuned with this dataset; **training parameters** and a **final training report** are **included** in the repository.
+
+---
+
+## Repository structure:
+
+```bash
+SnippetGuard/
+   ├── bin/
+   ├── model/
+   └── data/
+```
+
+  - `bin/`: python modules to run the tool
   - `model/`: pretrained model files and `labels.json`
   - `data/`: dataset used for training, training parameters (epochs, batch size, test size), and training report
 
@@ -126,7 +139,9 @@ Here are some simple examples of how to use SnippetGuard and the corresponding o
 
 ## GPU support
 
-The code can use GPU if available, but you need a compatible NVIDIA GPU and CUDA drivers installed. Otherwise, it will run on CPU.
+> [!NOTE]
+> The code can use GPU if available, but you need a compatible NVIDIA GPU and CUDA drivers installed. If you don’t have a GPU or drivers, just skip this section to run on CPU.
+
 To enable GPU:
 
 1. Go to `bin/model.py` source code
@@ -142,18 +157,13 @@ To enable GPU:
       19 # device = torch.device("cpu")
       20 # model.to(device)
       ```
-If you don’t have a GPU or drivers, just leave it commented to run on CPU.
 
 ---
 
 ## Future Developments
 
-Potential future improvements for SnippetGuard include optimizing the parsing and segmentation of code chunks to enhance accuracy and efficiency.
+Potential future improvements for SnippetGuard include **optimizing the parsing and segmentation** of code chunks to enhance accuracy and efficiency.
 
-Another important direction is to expand the model’s knowledge base, enabling it to analyze vulnerabilities in additional programming languages beyond Python.
+Another important direction is to **expand the model’s knowledge base**, enabling it to analyze vulnerabilities in additional programming languages beyond Python.
 
-A possible future development could be the integration of generative AI to suggest safe fixes for vulnerable code snippets; however, this would make the program slower and heavier, moving away from the original lightweight design of the project.
-
----
-
-If you have any questions or want to contribute, feel free to open an issue or submit a pull request!
+A possible future development could be the integration of **generative AI to suggest safe fixes** for vulnerable code snippets; however, this would make the program slower and heavier, moving away from the original lightweight design of the project.
